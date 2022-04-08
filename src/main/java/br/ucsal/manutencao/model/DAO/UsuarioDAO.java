@@ -1,22 +1,32 @@
-package br.ucsal.banco;
+package br.ucsal.manutencao.model.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ucsal.banco.BancoDeDados;
 import br.ucsal.manutencao.model.entidades.*;
 
-public class Usuarios {
+public class UsuarioDAO {
 	private static List<Usuario> usuarios = new ArrayList<>();
 
+    public static void conectar(){
+		usuarios = BancoDeDados.getUsuarios();
+	}
+
     public boolean add(Usuario usuario){
-		return usuarios.add(usuario);
+        conectar();
+        boolean value = usuarios.add(usuario);
+        BancoDeDados.setUsuarios(usuarios);
+		return value;
 	}
 
     public List<Usuario> getTable(){
+        conectar();
 		return usuarios;
 	}
 	
 	public Usuario getDado(int id){
+        conectar();
         Usuario usuario = new Usuario();
         for (Usuario use : usuarios){
             usuario = use;
@@ -25,14 +35,18 @@ public class Usuarios {
 	}
 	
 	public boolean remove(int id){
+        conectar();
         Usuario usuario = new Usuario();
         for (Usuario use : usuarios){
             usuario = use;
         }
-		return usuarios.remove(usuario);
+        boolean value = usuarios.remove(usuario);
+        BancoDeDados.setUsuarios(usuarios);
+		return value;
 	}
 	
 	public void update(int id){
+        conectar();
         Usuario usuario = new Usuario();
         int aux = 0;
         for (Usuario use : usuarios){
@@ -40,5 +54,6 @@ public class Usuarios {
             aux++;
         }
 		usuarios.set(aux, usuario);
+        BancoDeDados.setUsuarios(usuarios);
 	}
 }

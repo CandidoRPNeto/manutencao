@@ -1,22 +1,32 @@
-package br.ucsal.banco;
+package br.ucsal.manutencao.model.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ucsal.banco.BancoDeDados;
 import br.ucsal.manutencao.model.entidades.*;
 
-public class Laboratorios {
+public class LaboratorioDAO {
 	private static List<Laboratorio> laboratorios = new ArrayList<>();
+
+    public static void conectar(){
+		laboratorios = BancoDeDados.getLaboratorios();
+	}
     
     public boolean add(Laboratorio laboratorio){
-		return laboratorios.add(laboratorio);
+        conectar();
+        boolean value = laboratorios.add(laboratorio);
+        BancoDeDados.setLaboratorios(laboratorios);
+		return value;
 	}
     
     public List<Laboratorio> getTable(){
+        conectar();
 		return laboratorios;
 	}
 	
 	public Laboratorio getDado(int id){
+        conectar();
         Laboratorio laboratorio = new Laboratorio();
         for (Laboratorio eq : laboratorios){
             laboratorio = eq;
@@ -25,14 +35,18 @@ public class Laboratorios {
 	}
 	
 	public boolean remove(int id){
+        conectar();
         Laboratorio laboratorio = new Laboratorio();
         for (Laboratorio eq : laboratorios){
             laboratorio = eq;
         }
-		return laboratorios.remove(laboratorio);
+        boolean value = laboratorios.remove(laboratorio);
+        BancoDeDados.setLaboratorios(laboratorios);
+		return value;
 	}
 	
 	public void update(int id){
+        conectar();
         Laboratorio laboratorio = new Laboratorio();
         int aux = 0;
         for (Laboratorio lab : laboratorios){
@@ -40,5 +54,6 @@ public class Laboratorios {
             aux++;
         }
 		laboratorios.set(aux, laboratorio);
+        BancoDeDados.setLaboratorios(laboratorios);
 	}
 }

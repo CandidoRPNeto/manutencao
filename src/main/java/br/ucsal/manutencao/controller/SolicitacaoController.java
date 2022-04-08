@@ -1,9 +1,9 @@
 package br.ucsal.manutencao.controller;
 
+import br.ucsal.manutencao.model.DAO.SolicitacaoDAO;
 import br.ucsal.manutencao.model.entidades.Solicitacao;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import  br.ucsal.banco.Solicitacoes;
 
 import java.util.ArrayList;
 

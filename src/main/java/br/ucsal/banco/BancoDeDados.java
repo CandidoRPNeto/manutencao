@@ -1,0 +1,39 @@
+package br.ucsal.banco;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.ucsal.manutencao.model.entidades.*;
+
+public class BancoDeDados {
+	private static List<Equipamento> equipamentos = new ArrayList<>();
+	private static List<Laboratorio> laboratorios = new ArrayList<>();
+	private static List<Solicitacao> solicitacoes = new ArrayList<>();
+	private static List<Usuario> usuarios = new ArrayList<>();
+
+    public static List<Equipamento> getEquipamentos(){
+        return equipamentos;
+    }
+    public static List<Usuario> getUsuarios(){
+        return usuarios;
+    }
+    public static List<Laboratorio> getLaboratorios(){
+        return laboratorios;
+    }
+    public static List<Solicitacao> getSolicitacoes(){
+        return solicitacoes;
+    }
+
+    public static void setEquipamentos(List<Equipamento> lista){
+        equipamentos = lista;
+    }
+    public static void setUsuarios(List<Usuario> lista){
+        usuarios = lista;
+    }
+    public static void setLaboratorios(List<Laboratorio> lista){
+        laboratorios = lista;
+    }
+    public static void setSolicitacoes(List<Solicitacao> lista){
+        solicitacoes = lista;
+    }
+}
