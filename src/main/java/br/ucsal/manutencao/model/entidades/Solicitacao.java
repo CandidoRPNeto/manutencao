@@ -7,15 +7,11 @@ public class Solicitacao {
     private String reclamacao;
 
     public Solicitacao() {
-        this.id = id++;
+        Solicitacao.id = id++;
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNomeSolicitante() {
