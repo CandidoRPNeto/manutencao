@@ -29,28 +29,33 @@ public class LaboratorioDAO {
         conectar();
         Laboratorio laboratorio = new Laboratorio();
         for (Laboratorio eq : laboratorios){
-            laboratorio = eq;
+            if (eq.getId() == id){
+                laboratorio = eq;
+                break;
+            }
         }
 		return laboratorio;
 	}
 	
 	public boolean remove(int id){
         conectar();
-        Laboratorio laboratorio = new Laboratorio();
+        boolean value = false;
         for (Laboratorio eq : laboratorios){
-            laboratorio = eq;
+            if (eq.getId() == id){
+                value = laboratorios.remove(eq);
+                BancoDeDados.setLaboratorios(laboratorios);
+                break;
+            }
         }
-        boolean value = laboratorios.remove(laboratorio);
-        BancoDeDados.setLaboratorios(laboratorios);
 		return value;
 	}
 	
-	public void update(int id){
+	public void update(Laboratorio laboratorio){
         conectar();
-        Laboratorio laboratorio = new Laboratorio();
         int aux = 0;
         for (Laboratorio lab : laboratorios){
-            laboratorio = lab;
+            if (laboratorio.getId() == lab.getId())
+                break;
             aux++;
         }
 		laboratorios.set(aux, laboratorio);

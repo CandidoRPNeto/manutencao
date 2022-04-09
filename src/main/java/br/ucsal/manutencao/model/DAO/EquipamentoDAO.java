@@ -36,12 +36,11 @@ public class EquipamentoDAO {
 	
 	public static boolean remove(int id){
         conectar();
-        Equipamento equipamento = new Equipamento();
+        boolean value = false;
         for (Equipamento eq : equipamentos){
-            equipamento = eq;
+            value = equipamentos.remove(eq);
+            BancoDeDados.setEquipamentos(equipamentos);
         }
-        boolean value = equipamentos.remove(equipamento);
-        BancoDeDados.setEquipamentos(equipamentos);
 		return value;
 	}
 	

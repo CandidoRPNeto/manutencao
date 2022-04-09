@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Laboratorio {
-	private String id;
+    private static Integer id = 0;
 	private String nome;
 	private List<Equipamento> equipamento = new ArrayList<>();
 
@@ -14,17 +14,13 @@ public class Laboratorio {
 
 	public Laboratorio(String id, String nome, List<Equipamento> equipamento) {
 		super();
-		this.id = id;
+		Laboratorio.id++;
 		this.nome = nome;
 		this.equipamento = equipamento;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getNome() {

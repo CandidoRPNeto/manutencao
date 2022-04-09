@@ -29,28 +29,33 @@ public class GestorDAO {
         conectar();
         Gestor usuario = new Gestor();
         for (Gestor use : gestores){
-            usuario = use;
+            if (use.getId() == id){
+                usuario = use;
+                break;
+            }
         }
 		return usuario;
 	}
 	
 	public boolean remove(int id){
         conectar();
-        Gestor usuario = new Gestor();
+        boolean value = false;
         for (Gestor use : gestores){
-            usuario = use;
+            if (use.getId() == id){
+                value = gestores.remove(use);
+                BancoDeDados.setGestores(gestores);
+                break;
+            }
         }
-        boolean value = gestores.remove(usuario);
-        BancoDeDados.setGestores(gestores);
 		return value;
 	}
 	
-	public void update(int id){
+	public void update(Gestor usuario){
         conectar();
-        Gestor usuario = new Gestor();
         int aux = 0;
         for (Gestor use : gestores){
-            usuario = use;
+            if (usuario.getId() == use.getId())
+                break;
             aux++;
         }
 		gestores.set(aux, usuario);

@@ -2,7 +2,7 @@ package br.ucsal.manutencao.model.entidades;
 
 
 public class Solicitacao {
-    private static Integer id;
+    private static Integer id = 0;
     private String nomeSolicitante;
     private String reclamacao;
 

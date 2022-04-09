@@ -29,28 +29,33 @@ public class SolicitacaoDAO {
         conectar();
         Solicitacao solicitacao = new Solicitacao();
         for (Solicitacao sol : solicitacoes){
-            solicitacao = sol;
+            if (sol.getId() == id){
+                solicitacao = sol;
+                break;
+            }
         }
 		return solicitacao;
 	}
 	
 	public boolean remove(int id){
         conectar();
-        Solicitacao solicitacao = new Solicitacao();
+        boolean value = false;
         for (Solicitacao sol : solicitacoes){
-            solicitacao = sol;
+            if (sol.getId() == id){
+                value = solicitacoes.remove(sol);
+                BancoDeDados.setSolicitacoes(solicitacoes);
+                break;
+            }
         }
-        boolean value = solicitacoes.remove(solicitacao);
-        BancoDeDados.setSolicitacoes(solicitacoes);
 		return value;
 	}
 	
-	public void update(int id){
+	public void update(Solicitacao solicitacao){
         conectar();
-        Solicitacao solicitacao = new Solicitacao();
         int aux = 0;
         for (Solicitacao sol : solicitacoes){
-            solicitacao = sol;
+            if (solicitacao.getId() == sol.getId())
+                break;
             aux++;
         }
 		solicitacoes.set(aux, solicitacao);
