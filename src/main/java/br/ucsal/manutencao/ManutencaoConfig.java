@@ -15,8 +15,8 @@ public class ManutencaoConfig implements WebMvcConfigurer{
 	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setViewClass(JstlView.class);
-		resolver.setPrefix("/WEB-INF/");
-		resolver.setSuffix(".html");
+		resolver.setPrefix("/WEB-INF/Login/");
+		resolver.setSuffix(".jsp");
 		return resolver;
 		}
 	

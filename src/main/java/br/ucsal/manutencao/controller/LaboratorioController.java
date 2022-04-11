@@ -2,7 +2,6 @@ package br.ucsal.manutencao.controller;
 
 import br.ucsal.manutencao.model.DAO.LaboratorioDAO;
 import br.ucsal.manutencao.model.entidades.Laboratorio;
-import br.ucsal.manutencao.model.entidades.Solicitacao;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

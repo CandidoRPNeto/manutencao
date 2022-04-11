@@ -4,8 +4,8 @@ public class Solicitante extends Usuario{
 
 	int semestre;
 	
-	public Solicitante(String email, String senha, int id) {
-		super(email, senha, id);
+	public Solicitante(String email, String senha) {
+		super(email, senha);
 		
 	}
     public Solicitante() {
