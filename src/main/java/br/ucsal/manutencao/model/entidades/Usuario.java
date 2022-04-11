@@ -6,13 +6,13 @@ public abstract class Usuario {
 
 	private String senha;
 
-	private int id;
+    private static Integer id = 0;
 
-	public Usuario(String email, String senha, int id) {
+	public Usuario(String email, String senha) {
 		super();
 		this.email = email;
 		this.senha = senha;
-		this.id = id;
+		Usuario.id++;
 	}
 
     public Usuario() {}

@@ -29,7 +29,10 @@ public class EquipamentoDAO {
         conectar();
         Equipamento equipamento = new Equipamento();
         for (Equipamento eq : equipamentos){
-            equipamento = eq;
+            if (eq.getId() == id){
+                equipamento = eq;
+                break;
+            }
         }
 		return equipamento;
 	}
@@ -38,18 +41,21 @@ public class EquipamentoDAO {
         conectar();
         boolean value = false;
         for (Equipamento eq : equipamentos){
-            value = equipamentos.remove(eq);
-            BancoDeDados.setEquipamentos(equipamentos);
+            if (eq.getId() == id){
+                value = equipamentos.remove(eq);
+                BancoDeDados.setEquipamentos(equipamentos);
+                break;
+            } 
         }
 		return value;
 	}
 	
-	public static void update(int id){
+	public static void update(Equipamento equipamento){
         conectar();
-        Equipamento equipamento = new Equipamento();
         int aux = 0;
         for (Equipamento eq : equipamentos){
-            equipamento = eq;
+            if (equipamento.getId() == eq.getId())
+                break;
             aux++;
         }
 		equipamentos.set(aux, equipamento);
