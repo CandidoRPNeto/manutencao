@@ -6,41 +6,41 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SolicitacaoController {
 
+    private static SolicitacaoDAO solicitacaoDAO =  new SolicitacaoDAO();
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarSolicitacao(@RequestBody Solicitacao PostSolicitacao) {
+    public void criarSolicitacao(@RequestBody Solicitacao postSolicitacao) {
         Solicitacao solicitacao = new Solicitacao();
-        solicitacao.setNomeSolicitante(PostSolicitacao.getNomeSolicitante());
-        solicitacao.setReclamacao(PostSolicitacao.getReclamacao());
-        // Setar em Array
+        solicitacao.setNomeSolicitante(postSolicitacao.getNomeSolicitante());
+        solicitacao.setReclamacao(postSolicitacao.getReclamacao());
+        solicitacaoDAO.add(solicitacao);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarSolicitacao(@PathVariable Integer id) {
-        // Buscar no Array
+        solicitacaoDAO.remove(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizarSolicitacao(@PathVariable Integer id, @RequestBody Solicitacao PostSolicitacao) {
-        // Updatar no array
+    public void atualizarSolicitacao(@PathVariable Integer id, @RequestBody Solicitacao postSolicitacao) {
+        solicitacaoDAO.update(postSolicitacao);
     }
 
     @GetMapping
-    public ArrayList<Solicitacao> getAll() {
-        // Retornar array com todas as solicitações
-        ArrayList<Solicitacao> placeholder = new ArrayList<>();
-        return placeholder;
+    public List<Solicitacao> getAll() {
+        return solicitacaoDAO.getTable();
     }
 
-    @GetMapping("/{nomeSolicitante}")
-    public Solicitacao getSolicitacao(@PathVariable String nomeSolicitante ) {
-        // Retornar solicitacao por nome
-        Solicitacao placeholder = new Solicitacao();
-        return placeholder;
+    @GetMapping("/{id}")
+    public Solicitacao getSolicitacao(@PathVariable Integer id ) {
+       return solicitacaoDAO.getDado(id);
     }
 
 }
